@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waswa W. Henry — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0D1117;
+    --accent: #0A6B8A;
+    --gold: #B8892A;
+    --green: #1E6B3C;
+    --soft: #F0F6F9;
+    --card: #FFFFFF;
+    --muted: #6B7A85;
+    --border: #DDE6EC;
+    --tag-un: #0A6B8A;
+    --tag-data: #1E6B3C;
+    --tag-field: #7A3C1A;
+    --tag-volunteer: #4A2A6B;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: #F7F9FB; color: var(--ink); line-height: 1.6; }
+
+  /* HERO */
+  .hero { background: var(--ink); color: white; padding: 80px 40px 60px; position: relative; overflow: hidden; }
+  .hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:radial-gradient(circle,rgba(10,107,138,0.25) 0%,transparent 70%); }
+  .hero::after { content:''; position:absolute; bottom:-80px; left:10%; width:200px; height:200px; border-radius:50%; background:radial-gradient(circle,rgba(184,137,42,0.15) 0%,transparent 70%); }
+  .hero-inner { max-width:900px; margin:0 auto; position:relative; z-index:1; }
+  .hero-tag { display:inline-block; background:rgba(10,107,138,0.3); color:#7ECFE0; font-size:12px; font-weight:600; letter-spacing:2px; text-transform:uppercase; padding:4px 12px; border-radius:20px; margin-bottom:20px; border:1px solid rgba(10,107,138,0.4); }
+  .hero h1 { font-family:'DM Serif Display',serif; font-size:clamp(42px,7vw,72px); line-height:1.05; margin-bottom:16px; letter-spacing:-1px; }
+  .hero h1 span { color:#4DC0D8; }
+  .hero-sub { font-size:18px; color:rgba(255,255,255,0.65); font-weight:300; margin-bottom:32px; max-width:560px; }
+  .hero-pills { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:36px; }
+  .pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.8); font-size:13px; padding:6px 14px; border-radius:20px; }
+  .pill.new { background:rgba(30,107,60,0.3); border-color:rgba(30,107,60,0.5); color:#7ED4A0; }
+  .hero-contact { display:flex; flex-wrap:wrap; gap:20px; font-size:14px; color:rgba(255,255,255,0.5); }
+  .hero-contact a { color:#4DC0D8; text-decoration:none; transition:color 0.2s; }
+  .hero-contact a:hover { color:white; }
+
+  /* NEW BADGE */
+  .new-badge { display:inline-block; background:#1E6B3C; color:white; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:2px 8px; border-radius:10px; margin-left:8px; vertical-align:middle; }
+
+  /* NAV */
+  nav { background:white; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; padding:0 40px; }
+  .nav-inner { max-width:900px; margin:0 auto; display:flex; gap:0; }
+  .nav-inner a { display:block; padding:16px 20px; font-size:13px; font-weight:500; color:var(--muted); text-decoration:none; border-bottom:2px solid transparent; transition:all 0.2s; }
+  .nav-inner a:hover { color:var(--accent); border-bottom-color:var(--accent); }
+
+  /* SECTIONS */
+  section { max-width:900px; margin:0 auto; padding:64px 40px; }
+  .section-label { font-size:11px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+  .section-title { font-family:'DM Serif Display',serif; font-size:32px; color:var(--ink); margin-bottom:40px; padding-bottom:16px; border-bottom:2px solid var(--border); }
+
+  /* ABOUT */
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+  .about-text p { font-size:16px; color:#2A3540; line-height:1.75; margin-bottom:16px; }
+  .stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .stat-box { background:var(--soft); border:1px solid var(--border); border-radius:10px; padding:20px; text-align:center; }
+  .stat-num { font-family:'DM Serif Display',serif; font-size:36px; color:var(--accent); display:block; }
+  .stat-label { font-size:12px; color:var(--muted); font-weight:500; margin-top:4px; }
+
+  /* SKILLS */
+  .skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .skill-group { background:white; border:1px solid var(--border); border-radius:12px; padding:24px; }
+  .skill-group h3 { font-size:13px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
+  .skill-item { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+  .skill-name { font-size:14px; color:var(--ink); }
+  .skill-dots { display:flex; gap:4px; }
+  .dot { width:8px; height:8px; border-radius:50%; background:var(--border); }
+  .dot.filled { background:var(--accent); }
+  .dot.filled.gold { background:var(--gold); }
+  .dot.filled.green { background:var(--green); }
+
+  /* PORTFOLIO */
+  .project-card { background:white; border:1px solid var(--border); border-radius:14px; padding:32px; margin-bottom:24px; position:relative; overflow:hidden; transition:box-shadow 0.25s, transform 0.25s; }
+  .project-card:hover { box-shadow:0 8px 32px rgba(10,107,138,0.10); transform:translateY(-2px); }
+  .project-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; }
+  .project-card.field::before { background:var(--tag-field); }
+  .project-card.un::before { background:var(--tag-un); }
+  .project-card.data::before { background:var(--tag-data); }
+  .project-card.volunteer::before { background:var(--tag-volunteer); }
+  .project-card.featured { border-color:#1E6B3C; box-shadow:0 4px 20px rgba(30,107,60,0.12); }
+  .featured-banner { background:#1E6B3C; color:white; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:6px 16px; margin:-32px -32px 24px -32px; }
+  .project-header { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:8px; flex-wrap:wrap; }
+  .project-title { font-family:'DM Serif Display',serif; font-size:20px; color:var(--ink); line-height:1.2; }
+  .project-tag { font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:4px 10px; border-radius:20px; white-space:nowrap; }
+  .tag-field { background:#EAD5C0; color:var(--tag-field); }
+  .tag-un { background:#E0F2F8; color:var(--tag-un); }
+  .tag-data { background:#D5EAD9; color:var(--tag-data); }
+  .tag-volunteer { background:#E8D5F0; color:var(--tag-volunteer); }
+  .project-meta { font-size:13px; color:var(--muted); margin-bottom:16px; font-style:italic; }
+  .project-desc { font-size:15px; color:#2A3540; line-height:1.7; margin-bottom:20px; }
+  .project-highlights { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .project-highlights li { font-size:13px; color:var(--muted); padding-left:16px; position:relative; line-height:1.5; }
+  .project-highlights li::before { content:'→'; position:absolute; left:0; color:var(--accent); font-size:12px; }
+  .outcome { margin-top:16px; background:var(--soft); border-radius:8px; padding:12px 16px; font-size:13px; color:var(--accent); font-weight:500; }
+  .outcome span { color:var(--muted); font-weight:400; }
+
+  /* TIMELINE */
+  .timeline { position:relative; padding-left:28px; }
+  .timeline::before { content:''; position:absolute; left:0; top:8px; bottom:8px; width:2px; background:var(--border); }
+  .timeline-item { position:relative; margin-bottom:36px; }
+  .timeline-item::before { content:''; position:absolute; left:-34px; top:6px; width:12px; height:12px; border-radius:50%; background:var(--accent); border:2px solid white; box-shadow:0 0 0 2px var(--accent); }
+  .timeline-item.current::before { background:var(--green); box-shadow:0 0 0 2px var(--green); }
+  .tl-date { font-size:12px; color:var(--accent); font-weight:600; letter-spacing:0.5px; margin-bottom:4px; }
+  .timeline-item.current .tl-date { color:var(--green); }
+  .tl-title { font-size:16px; font-weight:600; color:var(--ink); margin-bottom:2px; }
+  .tl-org { font-size:13px; color:var(--muted); font-style:italic; margin-bottom:8px; }
+  .tl-desc { font-size:14px; color:#3A4A55; line-height:1.65; }
+
+  /* EDU */
+  .edu-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .edu-card { background:white; border:1px solid var(--border); border-radius:12px; padding:28px; }
+  .edu-card h3 { font-family:'DM Serif Display',serif; font-size:20px; margin-bottom:6px; }
+  .edu-card .org { color:var(--muted); font-size:14px; font-style:italic; margin-bottom:4px; }
+  .edu-card .year { color:var(--accent); font-size:13px; font-weight:600; }
+
+  /* LANG */
+  .lang-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .lang-card { background:white; border:1px solid var(--border); border-radius:12px; padding:24px; text-align:center; }
+  .lang-name { font-family:'DM Serif Display',serif; font-size:24px; color:var(--ink); margin-bottom:6px; }
+  .lang-level { font-size:13px; font-weight:600; margin-bottom:4px; }
+  .lang-sub { font-size:12px; color:var(--muted); }
+
+  /* FOOTER */
+  footer { background:var(--ink); color:rgba(255,255,255,0.5); text-align:center; padding:40px; font-size:14px; }
+  footer a { color:#4DC0D8; text-decoration:none; }
+  footer strong { color:white; display:block; font-family:'DM Serif Display',serif; font-size:22px; margin-bottom:4px; }
+  footer em { display:block; color:rgba(255,255,255,0.3); font-size:12px; margin-top:8px; font-style:normal; }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+  .hero-inner>*{animation:fadeUp 0.6s ease both;}
+  .hero-inner>*:nth-child(1){animation-delay:0.1s;}
+  .hero-inner>*:nth-child(2){animation-delay:0.2s;}
+  .hero-inner>*:nth-child(3){animation-delay:0.3s;}
+  .hero-inner>*:nth-child(4){animation-delay:0.4s;}
+  .hero-inner>*:nth-child(5){animation-delay:0.5s;}
+
+  @media(max-width:680px){
+    .about-grid,.skills-grid,.lang-grid,.edu-grid{grid-template-columns:1fr;}
+    .project-highlights{grid-template-columns:1fr;}
+    section{padding:48px 20px;}
+    .hero{padding:60px 20px 48px;}
+    nav{padding:0 20px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Professional Portfolio · Updated July 2026 · Nairobi, Kenya</div>
+    <h1>Waswa W. <span>Henry</span></h1>
+    <p class="hero-sub">Data Analyst · Field Research Monitor · Programme Coordinator · UN Contributor</p>
+    <div class="hero-pills">
+      <span class="pill new">🔬 AI Research Field Monitor</span>
+      <span class="pill">Power BI & Excel</span>
+      <span class="pill">Python & SQL</span>
+      <span class="pill">UNDP Alumnus</span>
+      <span class="pill">Multi-site Coordination</span>
+      <span class="pill">B.Sc. Mathematics</span>
+    </div>
+    <div class="hero-contact">
+      <span>📍 Nairobi, Kenya</span>
+      <a href="mailto:henrywaswa1@gmail.com">henrywaswa1@gmail.com</a>
+      <span>+254716693160</span>
+      <a href="#">LinkedIn: Waswa W. Henry</a>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+  </div>
+</nav>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Introduction</div>
+  <h2 class="section-title">About Me</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I am a data and programme coordination professional with over 5 years of experience turning complex data into clear insights and making multi-stakeholder programmes run smoothly. I have worked across private sector companies, Kenyan public institutions, international UN agencies, and NGOs.</p>
+      <p>Most recently, I am serving as a <strong>Field Monitor</strong> on Mizizi Elimu Afrika's <strong>Gemini AI Efficacy Study</strong> — a Google DeepMind-funded research initiative examining the impact of AI-integrated learning across 15 schools in Nairobi. This has added hands-on field research, structured classroom observation, and multi-site operational coordination to my analytical and programme management foundations.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-box"><span class="stat-num">5+</span><div class="stat-label">Years of Experience</div></div>
+      <div class="stat-box"><span class="stat-num">15</span><div class="stat-label">Schools Currently Monitored</div></div>
+      <div class="stat-box"><span class="stat-num">3</span><div class="stat-label">UN Engagements</div></div>
+      <div class="stat-box"><span class="stat-num">30%</span><div class="stat-label">Engagement Growth Delivered</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background:var(--soft);max-width:100%;padding:64px 0;">
+  <div style="max-width:900px;margin:0 auto;padding:0 40px;">
+    <div class="section-label">Capabilities</div>
+    <h2 class="section-title">Skills at a Glance</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Analytics Tools</h3>
+        <div class="skill-item"><span class="skill-name">Excel (Advanced)</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Power BI</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Python</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+        <div class="skill-item"><span class="skill-name">SQL</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+        <div class="skill-item"><span class="skill-name">SPSS</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div></div>
+      </div>
+      <div class="skill-group">
+        <h3>Field & Programme Work</h3>
+        <div class="skill-item"><span class="skill-name">Field Monitoring & SOPs</span><div class="skill-dots"><div class="dot filled green"></div><div class="dot filled green"></div><div class="dot filled green"></div><div class="dot filled green"></div><div class="dot filled green"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Data Collection & QA</span><div class="skill-dots"><div class="dot filled green"></div><div class="dot filled green"></div><div class="dot filled green"></div><div class="dot filled green"></div><div class="dot filled green"></div></div></div>
+        <div class="skill-item"><span class="skill-name">M&E Tool Development</span><div class="skill-dots"><div class="dot filled green"></div><div class="dot filled green"></div><div class="dot filled green"></div><div class="dot filled green"></div><div class="dot"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Multi-site Coordination</span><div class="skill-dots"><div class="dot filled green"></div><div class="dot filled green"></div><div class="dot filled green"></div><div class="dot filled green"></div><div class="dot filled green"></div></div></div>
+        <div class="skill-item"><span class="skill-name">ICT Asset Management</span><div class="skill-dots"><div class="dot filled green"></div><div class="dot filled green"></div><div class="dot filled green"></div><div class="dot"></div><div class="dot"></div></div></div>
+      </div>
+      <div class="skill-group">
+        <h3>Coordination & Reporting</h3>
+        <div class="skill-item"><span class="skill-name">Stakeholder Reporting</span><div class="skill-dots"><div class="dot filled gold"></div><div class="dot filled gold"></div><div class="dot filled gold"></div><div class="dot filled gold"></div><div class="dot filled gold"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Programme Monitoring</span><div class="skill-dots"><div class="dot filled gold"></div><div class="dot filled gold"></div><div class="dot filled gold"></div><div class="dot filled gold"></div><div class="dot"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Dashboard Design</span><div class="skill-dots"><div class="dot filled gold"></div><div class="dot filled gold"></div><div class="dot filled gold"></div><div class="dot filled gold"></div><div class="dot filled gold"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Knowledge Management</span><div class="skill-dots"><div class="dot filled gold"></div><div class="dot filled gold"></div><div class="dot filled gold"></div><div class="dot filled gold"></div><div class="dot"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Cross-cultural Collab.</span><div class="skill-dots"><div class="dot filled gold"></div><div class="dot filled gold"></div><div class="dot filled gold"></div><div class="dot filled gold"></div><div class="dot filled gold"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-label">Selected Work</div>
+  <h2 class="section-title">Portfolio of Projects</h2>
+
+  <!-- MIZIZI — FEATURED -->
+  <div class="project-card field featured">
+    <div class="featured-banner">✦ Current Assignment — April 2026</div>
+    <div class="project-header">
+      <div class="project-title">Gemini AI Efficacy Study — Field Monitor <span class="new-badge">Current</span></div>
+      <span class="project-tag tag-field">Field Research</span>
+    </div>
+    <div class="project-meta">Mizizi Elimu Afrika (Google DeepMind-funded) · April – July 2026 · 15 Schools · Nairobi, Kenya</div>
+    <p class="project-desc">Serving as Field Monitor on a multicountry AI efficacy research study examining the impact of Google DeepMind's Gemini Guided Learning application on learner outcomes in Kenyan Junior Schools. The study involves 15 schools selected for ICT readiness and equitable representation across Nairobi.</p>
+    <ul class="project-highlights">
+      <li>Structured classroom observation — protocol adherence, teacher facilitation, learner engagement</li>
+      <li>SOP development and fidelity documentation across all 15 sites</li>
+      <li>ICT infrastructure verification — devices, connectivity, power reliability</li>
+      <li>Consent form uploads, student registry management, ethical compliance</li>
+      <li>Daily monitoring reports and weekly fidelity summaries to research team</li>
+      <li>Professional stakeholder engagement with HOIs, teachers, ICT staff</li>
+    </ul>
+    <div class="outcome">🎯 Outcome: <span>Contributing to high-quality field evidence on AI-integrated learning outcomes for children in Kenya</span></div>
+  </div>
+
+  <div class="project-card un">
+    <div class="project-header">
+      <div class="project-title">Multi-Country Youth Entrepreneurship Baseline Study</div>
+      <span class="project-tag tag-un">UN / International</span>
+    </div>
+    <div class="project-meta">UNDP Youth Empowerment Portfolio (YEP-AP) · 2023 · 12 weeks · Remote · Thailand</div>
+    <p class="project-desc">Coordinated a multi-country data analysis and synthesis project for UNDP's YEP-AP portfolio, establishing baseline benchmarks to inform inclusive youth entrepreneurship programme design across Asia and the Pacific.</p>
+    <ul class="project-highlights">
+      <li>Designed data collection instruments across multiple country contexts</li>
+      <li>Cleaned and analyzed cross-country datasets for comparative benchmarks</li>
+      <li>Synthesized findings into reports for senior international UN stakeholders</li>
+      <li>Collaborated with multicultural team ensuring reporting consistency</li>
+    </ul>
+    <div class="outcome">🎯 Outcome: <span>Evidence products used to inform UNDP programme design targeting youth employment barriers</span></div>
+  </div>
+
+  <div class="project-card data">
+    <div class="project-header">
+      <div class="project-title">Operational Performance Dashboard System</div>
+      <span class="project-tag tag-data">Data & Analytics</span>
+    </div>
+    <div class="project-meta">Sunpoint Solar and Electrical Co. Ltd · April 2023 – Present · Nairobi, Kenya</div>
+    <p class="project-desc">Designed and deployed an end-to-end data operations system using Python and Power BI to replace manual reporting workflows, providing management with real-time visibility into business performance and customer metrics.</p>
+    <ul class="project-highlights">
+      <li>Built automated Python pipelines for multi-source data ingestion</li>
+      <li>Developed interactive Power BI dashboards for revenue & KPI tracking</li>
+      <li>Implemented validation logic catching anomalies before reporting</li>
+      <li>Significantly reduced manual reporting time through automation</li>
+    </ul>
+    <div class="outcome">🎯 Outcome: <span>30% increase in customer engagement through data-driven strategy optimisation</span></div>
+  </div>
+
+  <div class="project-card data">
+    <div class="project-header">
+      <div class="project-title">Institutional Performance Monitoring Dashboards</div>
+      <span class="project-tag tag-data">Data & Analytics</span>
+    </div>
+    <div class="project-meta">Kenya Public Service Commission · Feb 2022 – Feb 2023 · Nairobi, Kenya</div>
+    <p class="project-desc">Developed and maintained real-time Power BI dashboards for senior leadership at the Kenya Public Service Commission, enabling data-driven decision-making across a large, complex public institution.</p>
+    <ul class="project-highlights">
+      <li>Built dashboards for C-suite departmental performance reporting</li>
+      <li>Applied actuarial methods to large financial datasets</li>
+      <li>Supported compliance reports and regulatory documentation</li>
+      <li>Large-scale data validation across multiple departments</li>
+    </ul>
+    <div class="outcome">🎯 Outcome: <span>Real-time performance visibility for senior leadership across multiple departments</span></div>
+  </div>
+
+  <div class="project-card volunteer">
+    <div class="project-header">
+      <div class="project-title">Child & Youth Programme Support</div>
+      <span class="project-tag tag-volunteer">Volunteer</span>
+    </div>
+    <div class="project-meta">Africa Child Foundation Mission of Tanzania · Aug – Oct 2023 · 12 weeks · Remote</div>
+    <p class="project-desc">Provided voluntary programme support to a child-focused NGO, contributing to implementation coordination, documentation, and stakeholder communication across ongoing youth initiatives.</p>
+    <ul class="project-highlights">
+      <li>Tracked programme activities against key milestones</li>
+      <li>Maintained structured project documentation systems</li>
+      <li>Coordinated communication between field and leadership teams</li>
+      <li>Supported planning within strict timelines</li>
+    </ul>
+    <div class="outcome">🎯 Outcome: <span>Improved documentation quality and programme coordination during assignment period</span></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="background:var(--soft);max-width:100%;padding:64px 0;">
+  <div style="max-width:900px;margin:0 auto;padding:0 40px;">
+    <div class="section-label">Career History</div>
+    <h2 class="section-title">Professional Timeline</h2>
+    <div class="timeline">
+      <div class="timeline-item current">
+        <div class="tl-date">April – July 2026 · CURRENT</div>
+        <div class="tl-title">Field Monitor — Gemini AI Efficacy Study</div>
+        <div class="tl-org">Mizizi Elimu Afrika · Nairobi, Kenya · 15 Schools</div>
+        <div class="tl-desc">Structured classroom observation, SOP development, ICT asset verification, data quality assurance, and multi-site stakeholder coordination for a Google DeepMind-funded AI research study.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">April 2023 – Present</div>
+        <div class="tl-title">Market Research Analyst</div>
+        <div class="tl-org">Sunpoint Solar and Electrical Co. Ltd · Nairobi, Kenya</div>
+        <div class="tl-desc">Data pipeline design, Power BI dashboards, automated reporting, and strategic analytical insights for business decision-making.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">2023 · 12 weeks</div>
+        <div class="tl-title">Data Analyst — UNDP YEP-AP</div>
+        <div class="tl-org">UNDP Youth Empowerment Portfolio · Remote · Thailand</div>
+        <div class="tl-desc">Multi-country baseline study data coordination and synthesis for international development programme design.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">Aug – Oct 2023</div>
+        <div class="tl-title">Program Support Volunteer</div>
+        <div class="tl-org">Africa Child Foundation Mission of Tanzania · Remote</div>
+        <div class="tl-desc">Voluntary programme implementation support, documentation, and coordination for child-focused NGO.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">Feb 2022 – Feb 2023</div>
+        <div class="tl-title">Actuarial Analyst Intern</div>
+        <div class="tl-org">Kenya Public Service Commission · Nairobi, Kenya</div>
+        <div class="tl-desc">Financial data analysis, Power BI dashboard development, compliance reporting, and institutional performance monitoring.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">Jan – Dec 2019</div>
+        <div class="tl-title">Data Analyst & Research Specialist</div>
+        <div class="tl-org">Plugin Africa Ltd · Mombasa, Kenya</div>
+        <div class="tl-desc">End-to-end data analysis, campaign performance tracking, and client-facing analytical reporting.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">Qualifications</div>
+  <h2 class="section-title">Education & Certifications</h2>
+  <div class="edu-grid" style="margin-bottom:40px;">
+    <div class="edu-card">
+      <h3>B.Sc. Mathematics</h3>
+      <div class="org">Technical University of Kenya</div>
+      <div class="year">2018 · Nairobi, Kenya</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div class="edu-card"><h3>Google Analytics Certification</h3><div class="org">Google</div><div class="year">2023</div></div>
+      <div class="edu-card"><h3>Data Engineering Essentials</h3><div class="org">Coursera</div><div class="year">2022</div></div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:48px;">Communication</div>
+  <h2 class="section-title">Languages</h2>
+  <div class="lang-grid">
+    <div class="lang-card"><div class="lang-name">English</div><div class="lang-level" style="color:var(--accent);">Fluent</div><div class="lang-sub">Spoken & Written · Professional</div></div>
+    <div class="lang-card"><div class="lang-name">Swahili</div><div class="lang-level" style="color:var(--green);">Fluent</div><div class="lang-sub">Spoken & Written · Native</div></div>
+    <div class="lang-card"><div class="lang-name">French</div><div class="lang-level" style="color:var(--gold);">Intermediate</div><div class="lang-sub">Spoken & Written · Conversational</div></div>
+  </div>
+</section>
+
+<footer>
+  <strong>Waswa W. Henry</strong>
+  Available for full-time roles, UNV assignments, consultancy & freelance engagements<br><br>
+  <a href="mailto:henrywaswa1@gmail.com">henrywaswa1@gmail.com</a> · +254716693160 · Nairobi, Kenya
+  <em>Portfolio last updated: July 2026</em>
+</footer>
+
+</body>
+</html>
